@@ -83,13 +83,52 @@ footer {
     width: 90%;
     max-width: 400px;
     border-radius: 15px;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+.modal-subtitle{
+    font-size: .9em;
     text-align: center;
+    font-style: italic;
+    font-weight: 100;
+}
+.modal-subtitle::before{
+    content: '"';
+}
+.modal-subtitle::after{
+    content: '"';
 }
 
 .modal img {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
+}
+
+.modal-list{
+    line-height: 2em;
+    font-size: .9em;
+}
+
+.modal-price{
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #ff6b81;
+}
+
+.btn {
+    display: inline-block;
+    margin: 15px auto;
+    padding: 12px 20px;
+    width: 90%;
+    text-align: center;
+    background: #ff6b81;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold
 }
 
 .close {
