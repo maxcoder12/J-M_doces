@@ -1,15 +1,18 @@
 const produtos = {
     doces: [
+        
         {
             title: "Mini Pudim",
             price: "R$5,99",
             img: "https://via.placeholder.com/300",
+            desc: "Pequeno no tamanho, gigante no sabor clássico",
             ingred: ["Ovo", "Leite Condensado", "Leite", "Essência de Baunilha", "Açucar Refinado"]
         },
         {
             title: "Cupcake",
             price: "R$8,99",
             img: "https://via.placeholder.com/300",
+            desc: "Macio, delicado e com cobertura irresistível",
             ingred: ["Manteiga", "Açucar Refinado", "Ovo", "Farinha", "Fermento", "Essência de Baunilha"],
             cobert: ["Creme de leite", "Emulsificante", "Chocolate Branco"]
         },
@@ -17,12 +20,14 @@ const produtos = {
             title: "Cookie",
             price: "R$4.99",
             img: "https://via.placeholder.com/300",
+            desc: "Crocante por fora, macio por dentro — do jeito perfeito",
             ingred: ["Farinha", "Fermento", "Bicarbonato", "Manteiga", "Açucar Refinado", "Açucar demerara", "Amemdoim", "Gotas de Chocolates", "Ovo"]
         },
         {
             title: "Cheesecake",
             price: "R$13,99",
             img: "https://via.placeholder.com/300",
+            desc: "Cremoso e equilibrado, com toque suave e sofisticado",
             ingred: ["Biscoito de Maizena", "Manteiga", "Cream Cheese", "Açucar refinado", "Ovo", "Creme de leite", "Essência de Baunilha"],
             cobert: ["Morango", "Açucar Refinado", "Limão"]
         },
@@ -30,14 +35,17 @@ const produtos = {
             title: "Biscoito Amanteigado (Leite Condensado)",
             price: "R$2,99",
             img: "https://via.placeholder.com/300",
+            desc: "Leve, macio e com aquele sabor que derrete na boca",
             ingred: ["Manteiga", "Açucar confeitero", "Ovo", "Farinha", "Leite Condensado", "Leite em pó"]
         },
         {
             title: "Biscoito Amanteigado (Limão ou Laranja)",
             price: "R$2,99",
             img: "https://via.placeholder.com/300",
+            desc: "Refrescante e aromático, com toque cítrico especial",
             ingred: ["Manteiga", "Açucar confeitero", "Ovo", "Farinha", "Cascas de Limao ou Laranja"]
         }
+        
 
     ],
 

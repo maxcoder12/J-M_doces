@@ -11,28 +11,32 @@
 <body>
     <h1>Cardápio J&M Doces</h1>
     <div class="section">
-        <h2>Produtos</h2>
-        <div class="seção" id="doces-container"></div>
+        <h2>Doces</h2>
+        <div class="container" id="doces-container"></div>
     </div>
     <div class="section">
         <h2>Boxes</h2>
-        <div class="seção" id="boxes-container"></div>
+        <div class="container" id="boxes-container"></div>
     </div>
     <div class="section">
         <h2>Combos</h2>
-        <div class="seção" id="combos-container"></div>
+        <div class="container" id="combos-container"></div>
     </div>
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-    
+
             <img id="modal-img" src="" alt="produto">
-    
+
             <h2 id="modal-title"></h2>
             <p class="modal-subtitle" id="modal-subtitle"></p>
-    
+
+            <h3 id="list-subtitle"></h3>
             <ul class="modal-list" id="modal-list"></ul>
-    
+
+            <h3 id="optional-list-subtitle"></h3>
+            <ul class="modal-list" id="optional-modal-list"></ul>
+
             <p class="modal-price" id="modal-price"></p>
 
             <a class="btn" href="https://wa.me/SEUNUMERO">Pedir no Whatsapp</a>
@@ -40,7 +44,7 @@
     </div>
 
     <footer>
-        <p>© 2026 J&M Doceria</p>
+        <p>© 2026 J&M Doces</p>
     </footer>
 
     <script src="data/data.js"></script>
@@ -56,13 +60,50 @@
             const list = document.getElementById("modal-list");
             list.innerHTML = "";
 
-            const itemsElements = card.items;
+            const listSubtitle = document.getElementById("list-subtitle");
 
-            itemsElements.forEach(item => {
-                const li = document.createElement("li");
-                li.textContent = item;
-                list.appendChild(li);
-            });
+            const optionalModalList = document.getElementById("optional-modal-list");
+            optionalModalList.style.display = "none";
+
+            const optionalListSubtitle = document.getElementById("optional-list-subtitle");
+            optionalListSubtitle.style.display = "none";
+
+            const itemsElements = card.items;
+            const ingredElements = card.ingred;
+            const cobertElements = card.cobert;
+
+            if (itemsElements != null) {
+                listSubtitle.textContent = "Itens:"
+                card.items.forEach(i => {
+                    const li = document.createElement("li");
+                    li.textContent = i;
+
+                    list.appendChild(li);
+                });
+            } else if (ingredElements != null) {
+
+                listSubtitle.textContent = "Ingredientes:"
+                card.ingred.forEach(i => {
+                    const li = document.createElement("li");
+                    li.textContent = i;
+
+                    list.appendChild(li);
+                });
+
+                if (cobertElements != null) {
+                    optionalListSubtitle.style.display = "block";
+                    optionalListSubtitle.textContent = "Cobertura:";
+
+                    optionalModalList.style.display = "block";
+
+                    card.cobert.forEach(i => {
+                        const li = document.createElement("li");
+                        li.textContent = i;
+
+                        optionalModalList.appendChild(li);
+                    });
+                };
+            };
 
             modal.style.display = "block";
         }
@@ -84,7 +125,7 @@
                 const card = document.createElement("div");
                 card.classList.add("card");
                 card.addEventListener("click", () => openModal(item));
-                
+
                 const img = document.createElement("img");
                 img.id = "card_image"
                 img.src = item.img;
@@ -108,18 +149,34 @@
                 ul.classList.add("items");
 
                 const ul2 = document.createElement("ul");
+                ul2.style.display = "none";
                 ul2.classList.add("items");
 
-                if (data == produtos.boxes || data == produtos.combos){
+                if (data == produtos.boxes || data == produtos.combos) {
                     item.items.forEach(i => {
                         const li = document.createElement("li");
                         li.textContent = i;
 
                         ul.appendChild(li);
                     });
-                } else {
+                } else if (data == produtos.doces) {
+                    item.ingred.forEach(i => {
+                        const li = document.createElement("li");
+                        li.textContent = i;
 
-                    // criar script para os doces individuais aparecer no modal, com ingredientes e os q tiver com cobertura
+                        ul.appendChild(li);
+                    });
+
+                    if (item.cobert && item.cobert != null) {
+                        item.cobert.forEach(i => {
+                            const li = document.createElement("li");
+                            li.textContent = i;
+
+                            ul2.appendChild(li);
+                        });
+
+                        card.appendChild(ul2);
+                    };
                 };
 
 

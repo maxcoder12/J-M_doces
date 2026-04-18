@@ -16,7 +16,12 @@ h2{
     padding: 20px
 }
 
-.seção {
+.section > h2{
+    font-size: 1.9em;
+}
+
+
+.container {
     width: 70%;
     margin: 0 auto;
     display: flex;
@@ -72,7 +77,8 @@ footer {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    overflow-y: auto;
     background: rgba(0, 0, 0, 0.6);
 }
 
