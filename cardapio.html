@@ -51,11 +51,11 @@
     <script>
         const modal = document.getElementById("modal");
 
-        function openModal(card) {
-            document.getElementById("modal-img").src = card.img;
-            document.getElementById("modal-title").innerText = card.title;
-            document.getElementById("modal-subtitle").innerText = card.desc;
-            document.getElementById("modal-price").innerText = card.price;
+        function openModal(card, item) {
+            document.getElementById("modal-img").src = item.img;
+            document.getElementById("modal-title").innerText = item.title;
+            document.getElementById("modal-subtitle").innerText = item.desc;
+            document.getElementById("modal-price").innerText = item.price;
 
             const list = document.getElementById("modal-list");
             list.innerHTML = "";
@@ -68,13 +68,13 @@
             const optionalListSubtitle = document.getElementById("optional-list-subtitle");
             optionalListSubtitle.style.display = "none";
 
-            const itemsElements = card.items;
-            const ingredElements = card.ingred;
-            const cobertElements = card.cobert;
+            const itemsElements = item.items;
+            const ingredElements = item.ingred;
+            const cobertElements = item.cobert;
 
             if (itemsElements != null) {
                 listSubtitle.textContent = "Itens:"
-                card.items.forEach(i => {
+                item.items.forEach(i => {
                     const li = document.createElement("li");
                     li.textContent = i;
 
@@ -83,7 +83,7 @@
             } else if (ingredElements != null) {
 
                 listSubtitle.textContent = "Ingredientes:"
-                card.ingred.forEach(i => {
+                item.ingred.forEach(i => {
                     const li = document.createElement("li");
                     li.textContent = i;
 
@@ -96,7 +96,7 @@
 
                     optionalModalList.style.display = "block";
 
-                    card.cobert.forEach(i => {
+                    item.cobert.forEach(i => {
                         const li = document.createElement("li");
                         li.textContent = i;
 
@@ -106,16 +106,47 @@
             };
 
             modal.style.display = "block";
+
+            document.querySelector(".close").onclick = () => {
+                modal.style.display = "none";
+                card.style.visibility = "visible";
+            };
+
+            window.onclick = (e) => {
+                if (e.target == modal) {
+                    modal.style.display = "none";
+                    card.style.visibility = "visible";
+                }
+            };
         }
 
-        document.querySelector(".close").onclick = () => {
-            modal.style.display = "none";
-        };
+        function animateToModal(card, item) {
+            card.style.visibility = "hidden";
+            const rect = card.getBoundingClientRect();
 
-        window.onclick = (e) => {
-            if (e.target == modal) {
-                modal.style.display = "none";
-            }
+            const clone = card.cloneNode(true);
+
+            clone.classList.add("card-clone");
+            clone.style.top = rect.top + "px";
+            clone.style.left = rect.left + "px";
+            clone.style.width = rect.width + "px";
+            clone.style.height = rect.height + "px";
+            document.body.appendChild(clone);
+
+            clone.getBoundingClientRect();
+
+            const modalWidth = 200;
+            const modalHeight = 300;
+            clone.style.top = "50%";
+            clone.style.left = "50%";
+            clone.style.width = modalWidth + "px";
+            clone.style.height = modalHeight + "px";
+            clone.style.transform = "translate(-50%, -50%)";
+   
+            setTimeout(() => {
+                clone.remove();
+                openModal(card, item);
+            }, 100);
         };
 
         function renderCards(data, containerId) {
@@ -124,16 +155,15 @@
             data.forEach(item => {
                 const card = document.createElement("div");
                 card.classList.add("card");
-                card.addEventListener("click", () => openModal(item));
-
+                
                 const img = document.createElement("img");
                 img.id = "card_image"
                 img.src = item.img;
-
+                
                 const h3 = document.createElement("h3");
                 h3.textContent = item.title;
                 h3.id = "card_title";
-
+                
                 const price = document.createElement("p");
                 price.classList.add("price");
                 price.textContent = item.price;
@@ -147,45 +177,45 @@
                 const ul = document.createElement("ul");
                 ul.style.display = "none";
                 ul.classList.add("items");
-
+                
                 const ul2 = document.createElement("ul");
                 ul2.style.display = "none";
                 ul2.classList.add("items");
-
+                
                 if (data == produtos.boxes || data == produtos.combos) {
                     item.items.forEach(i => {
                         const li = document.createElement("li");
                         li.textContent = i;
-
+                        
                         ul.appendChild(li);
                     });
                 } else if (data == produtos.doces) {
                     item.ingred.forEach(i => {
                         const li = document.createElement("li");
                         li.textContent = i;
-
+                        
                         ul.appendChild(li);
                     });
-
+                    
                     if (item.cobert && item.cobert != null) {
                         item.cobert.forEach(i => {
                             const li = document.createElement("li");
                             li.textContent = i;
-
+                            
                             ul2.appendChild(li);
                         });
-
+                        
                         card.appendChild(ul2);
                     };
                 };
-
 
                 card.appendChild(img);
                 card.appendChild(h3);
                 card.appendChild(price);
                 card.appendChild(desc);
                 card.appendChild(ul);
-
+                
+                card.addEventListener("click", () => animateToModal(card, item));
                 container.appendChild(card);
             });
         }
