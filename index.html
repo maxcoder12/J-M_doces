@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J&M Doces | Transformando pequenos doces em grandes momentos.</title>
+
+
+
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="shortcut icon" href="images/J&M_LOGO.jpeg" type="image/x-icon">
 </head>
 
 <body>
 
     <header>
-        <h1>J&M Doces</h1>
-        <p>Transformando pequenos doces em grandes momentos.</p>
+        <img src="images/J&M_LOGO.jpeg" alt="logo" class="logo">
+        <h1>Transformando pequenos doces em grandes momentos.</h1>
         <nav>
             <a class="btn" href="#">Início</a>
             <a class="btn" target="_blank" href="cardapio.html">Ver Cardápio Completo</a>
@@ -21,71 +25,60 @@
     </header>
 
     <main>
-        <section>
+        <section class="sec-one">
             <h2>Nossos Produtos</h2>
-            <div class="products">
-                <div class="card">Pudins <img src="images/pudim.webp" alt="Pudim"></div>
-                <div class="card">Cheesecakes<img src="images/cheesecake.webp" alt="Cheesecake"></div>
-                <div class="card">Cupcakes<img src="images/cupcakes.webp" alt="Cupcake"></div>
-                <div class="card">Cookies<img src="images/cookie.webp" alt="Cookie"></div>
-                <div class="card">Biscoitos<img src="images/biscoitos.webp" alt="Cookie"></div>
-            </div>
+            <div class="products" id="product-container"></div>
+            <!-- Produtos serão adicionados aqui dinamicamente -->
         </section>
         
-        <section>
+        <section class="sec-two">
             <h2>Combos & Boxes</h2>
-            <p>Perfeitos para qualquer ocasião</p>
+            <h3>Perfeitos para qualquer ocasião</h3>
         
-            <div class="boxes">
-                <div>
-                    <img src="images/box_premium.webp" alt="box_premium">
-                    <p>Uma seleção refinada para quem quer o melhor, sem abrir mão de nada.</p>
-                </div>
-                <div>
-                    <img src="images/cheesecake.webp" alt="mix_dos_sonhos">
-                    <p>Todos os seus favoritos em um só combo.</p>
-                </div>
-            </div>
-            <a class="btn-two" href="cardapio.html">Ver Cardápio Completo</a>
+            <div class="combo-boxes" id="combos-boxes-container"></div>
+            <!-- o script vai adiocionar dinamicamente  -->
         </section>
         
-        <h2>Sobre Nós</h2>
-        <p>Conheça a história da J&M Doces</p>
-        
-        <section class="values">
-            <div class="box visao">
-                <h2>Visão</h2>
-                <p>Ser reconhecida na região como uma doceria artesanal de excelência, destacando-se pela qualidade dos
-                    ingredientes, pelo sabor marcante e pela apresentação refinada, transformando cada detalhe em uma
-                    experiência memorável.</p>
+        <section class="sec-one">
+            <h2>Sobre Nós</h2>
+            <p>Conheça a história da J&M Doces</p>
+            
+            <div class="about-us">
+                <div class="history">
+                    <h3>Nossa História</h3>
+                    <p>Mais do que doces, criamos experiências que transformam momentos simples em memórias especiais.</p>
+                    <p>A J&M Doces nasceu da paixão por produzir sobremesas com qualidade, carinho e aquele toque caseiro que faz toda a
+                        diferença. Cada receita é pensada para encantar — desde o primeiro olhar até a última mordida.</p>
+                    <p>Trabalhamos com ingredientes selecionados, produção limitada e foco total em sabor e apresentação, garantindo que
+                        cada pedido seja único. </p>
+                    <p>Seja para um momento seu ou para surpreender alguém especial, estamos aqui para adoçar o seu dia.</p>
+                </div>
+
+                <div class="values">
+                    <div class="box missao">
+                        <h3>Missão</h2>
+                        <span>Ser reconhecida na região como uma doceria artesanal de excelência, destacando-se pela qualidade dos
+                            ingredientes, pelo sabor marcante e pela apresentação refinada, transformando cada detalhe em uma
+                            experiência memorável.</span>
+                    </div>
+                    <div class="box objetivo">
+                        <h3>Objetivo</h2>
+                        <span>Proporcionar experiências únicas por meio de doces artesanais, combinando sabor, estética e cuidado em cada
+                            criação, buscando encantar clientes e fazer parte de momentos especiais.</span>
+                    </div>
+                    <div class="box valores">
+                        <h3>Valores</h2>
+                        <ul>
+                            <li>Excelência na seleção dos ingredientes</li>
+                            <li>Produção artesanal com atenção aos detalhes</li>
+                            <li>Transparência e respeito com cada cliente</li>
+                            <li>Dedicação e capricho em cada etapa</li>
+                            <li>Compromisso com a satisfação e a experiência do cliente</li>
+                        </ul>
+                    </div>
+                
+                </div>
             </div>
-            <div class="box objetivo">
-                <h2>Objetivo</h2>
-                <p>Proporcionar experiências únicas por meio de doces artesanais, combinando sabor, estética e cuidado em cada
-                    criação, buscando encantar clientes e fazer parte de momentos especiais.</p>
-            </div>
-            <div class="box valores">
-                <h2>Valores</h2>
-                <ul>
-                    <li>Excelência na seleção dos ingredientes</li>
-                    <li>Produção artesanal com atenção aos detalhes</li>
-                    <li>Transparência e respeito com cada cliente</li>
-                    <li>Dedicação e capricho em cada etapa</li>
-                    <li>Compromisso com a satisfação e a experiência do cliente</li>
-                </ul>
-            </div>
-        
-        </section>
-        
-        <section class="about">
-            <p>Mais do que doces, criamos experiências que transformam momentos simples em memórias especiais.</p>
-            <p>A J&M Doces nasceu da paixão por produzir sobremesas com qualidade, carinho e aquele toque caseiro que faz toda a
-                diferença. Cada receita é pensada para encantar — desde o primeiro olhar até a última mordida.</p>
-            <p>Trabalhamos com ingredientes selecionados, produção limitada e foco total em sabor e apresentação, garantindo que
-                cada pedido seja único. </p>
-            <p>Seja para um momento seu ou para surpreender alguém especial, estamos aqui para adoçar o seu dia.</p>
-        
-            <a class="btn" href="https://wa.me/5599999999999?text=Quero%20fazer%20um%20pedido">Falar no WhatsApp</a>
         </section>
         
         
@@ -100,6 +93,138 @@
     <footer>
         <p>© 2026 J&M Doces</p>
     </footer>
+
+    <script src="data/data.js"></script>
+    <script>
+        function renderCards(data, containerId) {
+            const container = document.getElementById(containerId);
+
+            switch (containerId) {
+                case "product-container":
+                    data.forEach(item => {
+                        const card = document.createElement("div");
+                        card.classList.add("card");
+
+                        const img = document.createElement("img");
+                        img.src = item.img;
+                        img.alt = item.title;
+
+                        const cardContent = document.createElement("div");
+                        cardContent.classList.add("card-content");
+
+                        const h3 = document.createElement("h3");
+                        h3.textContent = item.title;
+                        h3.classList.add("card-title");
+
+                        const desc = document.createElement("p");
+                        desc.classList.add("desc");
+                        desc.textContent = item.desc;
+                        desc.classList.add("card-desc");
+
+                        const a = document.createElement("a");
+                        a.href = "cardapio.html";
+                        a.textContent = "Ver Detalhes";
+                        a.classList.add("card-btn");
+                        a.target = "_blank";
+
+                        cardContent.appendChild(h3);
+                        cardContent.appendChild(desc);
+                        cardContent.appendChild(a);
+
+                        card.appendChild(img);
+                        card.appendChild(cardContent);
+
+                        container.appendChild(card);
+                    });
+                    break;
+                case "combos-boxes-container":
+                    const boxEspecial = data.boxes.find(
+                        i => i.title === "Caixa Presente J&M"
+                    );
+
+                    const outrosBoxes = data.boxes.filter(
+                        i => i.title !== "Caixa Presente J&M"
+                    );
+
+                    const randomBox = outrosBoxes[
+                        Math.floor(Math.random() * outrosBoxes.length)
+                    ];
+
+                    const randomCombo = data.combos[
+                        Math.floor(Math.random() * data.combos.length)
+                    ];
+
+                    function renderBox(item) {
+                        const card = document.createElement("div");
+                        card.classList.add("card-two");
+
+                        const img = document.createElement("img");
+                        img.src = "images/cheesecake.webp";
+                        img.alt = item.title;
+
+                        const cardContent = document.createElement("div");
+                        cardContent.classList.add("card-content");
+
+                        const h4 = document.createElement("h4");
+                        h4.textContent = item.title;
+                        h4.classList.add("card-title");
+
+                        const desc = document.createElement("p");
+                        desc.classList.add("card-desc");
+                        // Tem que atualizar assim que tiver as fotos
+                        desc.textContent = item.desc;
+
+                        const h5 = document.createElement("h5");
+                        h5.style.color = "var(--cream)";
+                        h5.style.fontSize = "1.4rem";
+                        h5.textContent = "Itens Inclusos:";
+
+                        const items = document.createElement("ul");
+                        items.style.listStyle = "none"
+                        item.items.forEach(i => {
+                            const li = document.createElement("li");
+                            li.textContent = " - " + i;
+                            items.appendChild(li);
+                        });
+
+                        const a = document.createElement("a");
+                        a.href = "cardapio.html";
+                        a.textContent = "Pedir no WhatsApp";
+                        a.classList.add("card-btn-two");
+                        a.target = "_blank";
+
+                        cardContent.appendChild(h4);
+                        cardContent.appendChild(desc);
+                        cardContent.appendChild(h5);
+                        cardContent.appendChild(items);
+                        cardContent.appendChild(a);
+
+                        card.appendChild(img);
+                        card.appendChild(cardContent);
+
+                        container.appendChild(card);
+                    }
+
+                    for (let i = 0; i < 3; i++) {
+                        if (i == 0) {
+                            renderBox(randomBox);
+                        } else if (i == 1) {
+                            renderBox(boxEspecial);
+                        } else {
+                            renderBox(randomCombo);
+                        }
+                    }
+                    
+                    break;
+                default:
+                    container.innerHTML = "Erro ao renderizar | Atualize a página ou tente novamente mais tarde.";
+                    break;         
+            }     
+        }
+        renderCards(produtos.doces, "product-container");
+        renderCards(produtos, "combos-boxes-container");
+
+    </script>
 
 </body>
 

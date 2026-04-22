@@ -1,7 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --brown: #6B3E26;
+    --gold: #C89B3C;
+    --pink: #F28CA3;
+    --cream: #FFF6F2;
+    --text: #2B2B2B;
+}
+
 body {
     font-family: Arial;
     margin: 0;
-    background: #fff7f8
+    background: var(--cream);
 }
 
 h1 {
