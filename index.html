@@ -25,7 +25,7 @@
     </header>
 
     <main>
-        <section class="sec-one">
+        <section class="sec-one products-section">
             <h2>Nossos Produtos</h2>
             <div class="products" id="product-container"></div>
             <!-- Produtos serão adicionados aqui dinamicamente -->
@@ -39,7 +39,7 @@
             <!-- o script vai adiocionar dinamicamente  -->
         </section>
         
-        <section class="sec-one">
+        <section class="sec-one history-section">
             <h2>Sobre Nós</h2>
             <p>Conheça a história da J&M Doces</p>
             
@@ -83,10 +83,10 @@
         
         
         
-        <section class="cta">
+        <section class="cta sec-two">
             <h2>Peça agora!</h2>
-            <p>Produção limitada — garanta seu combo antes que acabe</p>
-            <a href="https://wa.me/SEUNUMERO">Fazer pedido no WhatsApp</a>
+            <p>Produção limitada — garanta seu combo antes que acabe!</p>
+            <a class="cta-btn" href="https://wa.me/SEUNUMERO">Fazer pedido no WhatsApp</a>
         </section>
     </main>
 
@@ -123,7 +123,7 @@
 
                         const a = document.createElement("a");
                         a.href = "cardapio.html";
-                        a.textContent = "Ver Detalhes";
+                        a.textContent = "Ver Mais";
                         a.classList.add("card-btn");
                         a.target = "_blank";
 
@@ -175,7 +175,6 @@
                         desc.textContent = item.desc;
 
                         const h5 = document.createElement("h5");
-                        h5.style.color = "var(--cream)";
                         h5.style.fontSize = "1.4rem";
                         h5.textContent = "Itens Inclusos:";
 
