@@ -5,43 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cardápio - J&M Doces</title>
+
+    <link rel="shortcut icon" href="images/J&M_LOGO.jpeg" type="image/x-icon">
     <link rel="stylesheet" href="styles/cardapio.css">
 </head>
 
 <body>
-    <h1>Cardápio J&M Doces</h1>
-    <div class="section">
-        <h2>Doces</h2>
-        <div class="container" id="doces-container"></div>
-    </div>
-    <div class="section">
-        <h2>Boxes</h2>
-        <div class="container" id="boxes-container"></div>
-    </div>
-    <div class="section">
-        <h2>Combos</h2>
-        <div class="container" id="combos-container"></div>
-    </div>
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
+    <header>
+        <img src="images/J&M_LOGO.jpeg" alt="J&M-logo" class="logo">
+        <h1>Nosso Cardápio</h1>
+    </header>
+    <main>
+        <!-- aqui as seções -->
+        <section class="section">
+            <h2>Doces</h2>
+            <div class="carousel">
+                <button class="prev"> < </button>
+                <div class="carousel-track" id="doces-container"></div>
+                <button class="next"> > </button>
 
-            <img id="modal-img" src="" alt="produto">
+            </div>
+            <!-- aqui os produtos serão renderizados pelo script -->
+        </section>
+        <section class="section">
+            <h2>Boxes</h2>
+            <div class="carousel">
+                <button class="prev"> < </button>
+                <div class="carousel-track" id="boxes-container"></div>
+                <button class="next"> > </button>
 
-            <h2 id="modal-title"></h2>
-            <p class="modal-subtitle" id="modal-subtitle"></p>
+            </div>
+            <!-- aqui os produtos serão renderizados pelo script -->
+        </section>
+        <section class="section">
+            <h2>Combos</h2>
+            <div class="carousel">
+                <button class="prev"> < </button>
+                <div class="carousel-track" id="combos-container"></div>
+                <button class="next"> > </button>
 
-            <h3 id="list-subtitle"></h3>
-            <ul class="modal-list" id="modal-list"></ul>
+            </div>
+            <!-- aqui os produtos serão renderizados pelo script -->
+        </section>
 
-            <h3 id="optional-list-subtitle"></h3>
-            <ul class="modal-list" id="optional-modal-list"></ul>
-
-            <p class="modal-price" id="modal-price"></p>
-
-            <a class="btn" href="https://wa.me/SEUNUMERO">Pedir no Whatsapp</a>
+        <!-- esse aqui é o modal -->
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+        
+                <img id="modal-img" src="" alt="produto">
+        
+                <h2 id="modal-title"></h2>
+                <p class="modal-subtitle" id="modal-subtitle"></p>
+        
+                <h3 id="list-subtitle"></h3>
+                <ul class="modal-list" id="modal-list"></ul>
+        
+                <h3 id="optional-list-subtitle"></h3>
+                <ul class="modal-list" id="optional-modal-list"></ul>
+        
+                <p class="modal-price" id="modal-price"></p>
+        
+                <a class="btn" href="contact.html">Fazer pedido</a>
+            </div>
         </div>
-    </div>
+    </main>
 
     <footer>
         <p>© 2026 J&M Doces</p>
@@ -158,7 +186,7 @@
                 
                 const img = document.createElement("img");
                 img.id = "card_image"
-                img.src = item.img;
+                img.src = "../images/cupcakes.webp";
                 
                 const h3 = document.createElement("h3");
                 h3.textContent = item.title;
@@ -223,6 +251,80 @@
         renderCards(produtos.doces, "doces-container");
         renderCards(produtos.boxes, "boxes-container");
         renderCards(produtos.combos, "combos-container");
+
+        document.querySelectorAll('.carousel').forEach(carousel => {
+
+                const track = carousel.querySelector('.carousel-track');
+                const nextBtn = carousel.querySelector('.next');
+                const prevBtn = carousel.querySelector('.prev');
+
+                let index = 0;
+                const itemsToShow = 4;
+                const gap = 20;
+
+                let cards = track.querySelectorAll('.card');
+
+                // 🔥 CLONAR primeiros itens (loop infinito suave)
+                for (let i = 0; i < itemsToShow.length; i++) {
+                    const clone = cards[i].cloneNode(true);
+                    track.appendChild(clone);
+                }
+
+                function updateCarousel(smooth = true) {
+                    const card = track.querySelector('.card');
+                    const cardWidth = card.offsetWidth + gap;
+
+                    track.style.transition = smooth ? "transform 0.5s ease" : "none";
+                    track.style.transform = `translateX(-${index * cardWidth}px)`;
+                }
+
+                function nextSlide() {
+                    const totalItems = track.querySelectorAll('.card').length;
+
+                    index++;
+                    updateCarousel(true);
+
+                    // 🔥 reset invisível (sem pulo feio)
+                    if (index >= totalItems - itemsToShow) {
+                        setTimeout(() => {
+                            index = 0;
+                            updateCarousel(false);
+                        }, 500);
+                    }
+                }
+
+                function prevSlide() {
+                    if (index <= 0) {
+                        const totalItems = track.querySelectorAll('.card').length;
+
+                        index = totalItems - itemsToShow;
+                        updateCarousel(false);
+
+                        setTimeout(() => {
+                            index--;
+                            updateCarousel(true);
+                        }, 10);
+
+                    } else {
+                        index--;
+                        updateCarousel(true);
+                    }
+                }
+
+                // 🔥 BOTÕES
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+
+                // 🔥 AUTO PLAY
+                let auto = setInterval(nextSlide, 2000);
+
+                carousel.addEventListener('mouseenter', () => clearInterval(auto));
+                carousel.addEventListener('mouseleave', () => {
+                    auto = setInterval(nextSlide, 2000);
+                });
+
+            });
+        
     </script>
 
 </body>
