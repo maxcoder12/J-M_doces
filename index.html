@@ -159,7 +159,7 @@
                         card.classList.add("card-two");
 
                         const img = document.createElement("img");
-                        img.src = "images/cheesecake.webp";
+                        img.src = item.img;
                         img.alt = item.title;
 
                         const cardContent = document.createElement("div");
@@ -171,7 +171,6 @@
 
                         const desc = document.createElement("p");
                         desc.classList.add("card-desc");
-                        // Tem que atualizar assim que tiver as fotos
                         desc.textContent = item.desc;
 
                         const h5 = document.createElement("h5");
