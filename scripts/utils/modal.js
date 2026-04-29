@@ -1,4 +1,5 @@
 import { createProduct } from "../models/productFactory.js";
+import { addToCart } from "../services/cart.js";
 
 export function openModal(item, tipo) {
     const modal = document.getElementById("modal");
@@ -15,6 +16,12 @@ export function openModal(item, tipo) {
 
     const product = createProduct(item, tipo);
     product.renderDetails(list);
+
+    const btn = document.getElementById("modal-button");
+    btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        addToCart(item);
+    });
 
     modal.style.display = "block";
 
